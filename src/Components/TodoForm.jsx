@@ -1,13 +1,25 @@
 import Card from './shared/Card';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Button from './shared/Button';
 import FavoriteSelector from './FavoriteSelector';
+import TodoContext from '../context/TodoContext';
 
-function TodoForm({ handleAdd }) {
+function TodoForm() {
   const [text, setText] = useState('');
-  const [isFavorite, setIsFavorite] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
+  const [rating, setRating] = useState(10);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
+
+  const { addTodo, todoEdit, updateTodo } = useContext(TodoContext);
+
+  useEffect(() => {
+    if (todoEdit.edit === true) {
+      setBtnDisabled(false);
+      setText(todoEdit.item.text);
+      setRating(todoEdit.item.rating);
+    }
+  }, [todoEdit]);
 
   const handleTextChange = (e) => {
     if (text === '') {
@@ -23,15 +35,31 @@ function TodoForm({ handleAdd }) {
     setText(e.target.value);
   };
 
+  const getDate = () => {
+    const today = new Date();
+    const date =
+      today.getFullYear() +
+      '-' +
+      (today.getMonth() + 1) +
+      '-' +
+      today.getDate();
+    return date;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim().length > 10) {
       const newTodo = {
-        date: new Date().toISOString(),
+        date: getDate(),
         text,
-        isFavorite,
+        /* isFavorite, */
+        rating,
       };
-      handleAdd(newTodo);
+      if (todoEdit.edit === true) {
+        updateTodo(todoEdit.item.id, newTodo);
+      } else {
+        addTodo(newTodo);
+      }
       setText('');
     }
   };
@@ -40,7 +68,9 @@ function TodoForm({ handleAdd }) {
     <Card>
       <form onSubmit={handleSubmit}>
         <h2>Create Todo ?</h2>
-        <FavoriteSelector select={(isFavorite) => setIsFavorite(isFavorite)} />
+        <br />
+        <p>How important is your To Do ?</p>
+        <FavoriteSelector select={(rating) => setRating(rating)} />
         {/* TODO - finish form*/}
         <div className="input-group">
           <input

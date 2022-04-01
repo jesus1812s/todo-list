@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaQuestion } from 'react-icons/fa';
+import { /* FaQuestion, */ FaCheck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 function FavoriteIconLink() {
@@ -11,7 +11,7 @@ function FavoriteIconLink() {
           search: '?sort=favorite',
         }}
       >
-        <FaQuestion size={30} />
+        <FaCheck size={30} />
       </Link>
     </div>
   );

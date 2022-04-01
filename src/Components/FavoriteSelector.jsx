@@ -1,7 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import TodoContext from '../context/TodoContext';
 
 function FavoriteSelector({ select }) {
   const [selected, setSelected] = useState(10);
+  const { todoEdit } = useContext(TodoContext);
+
+  useEffect(() => {
+    if (todoEdit.edit === true) {
+      setSelected(todoEdit.item.rating);
+    }
+  }, [todoEdit]);
 
   const handleChange = (e) => {
     setSelected(+e.currentTarget.value);

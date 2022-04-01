@@ -1,7 +1,10 @@
-import propTypes from 'prop-types';
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
 
-function TodoStats({ todo }) {
-  // Calculate the average rating
+function TodoStats() {
+  const { todo } = useContext(TodoContext);
+
+  // Calculate the average priority
   let average =
     todo.reduce((acc, cur) => {
       return acc + cur.rating;
@@ -10,15 +13,11 @@ function TodoStats({ todo }) {
   average = average.toFixed(1).replace(/[.,]0$/, '');
 
   return (
-    <div className="feedback-stats">
+    <div className="todo-stats">
       <h4>{todo.length} To Do Task</h4>
-      <h4>Average rating: {isNaN(average) ? 'No todos yet' : average}</h4>
+      <h4>Priority average: {isNaN(average) ? 'No todos yet' : average}</h4>
     </div>
   );
 }
-
-TodoStats.propTypes = {
-  todo: propTypes.array.isRequired,
-};
 
 export default TodoStats;

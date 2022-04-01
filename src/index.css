@@ -118,7 +118,7 @@ input:focus {
   outline: none;
 }
 
-.feedback-stats {
+.todo-stats {
   color: #fff;
   display: flex;
   justify-content: space-between;

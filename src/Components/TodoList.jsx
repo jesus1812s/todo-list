@@ -1,14 +1,17 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { useContext } from 'react';
 import TodoItem from './TodoItem';
-import PropTypes from 'prop-types';
+import TodoContext from '../context/TodoContext';
 
-function TodoList({ todo, handleDelete }) {
+function TodoList() {
+  const { todo } = useContext(TodoContext);
+
   if (!todo || todo.length === 0) {
     return <p> No todo yet</p>;
   }
 
   return (
-    <div className="feedback-list">
+    <div className="todo-list">
       <AnimatePresence>
         {todo.map((item) => (
           <motion.div
@@ -17,22 +20,12 @@ function TodoList({ todo, handleDelete }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <TodoItem key={item.id} item={item} handleDelete={handleDelete} />
+            <TodoItem key={item.id} item={item} />
           </motion.div>
         ))}
       </AnimatePresence>
     </div>
   );
 }
-
-TodoList.propTypes = {
-  todo: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      rating: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-    })
-  ),
-};
 
 export default TodoList;
