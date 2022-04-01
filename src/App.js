@@ -5,6 +5,7 @@ import TodoStats from './Components/TodoStats';
 import TodoForm from './Components/TodoForm';
 import FavoritesPage from './pages/FavoritesPage';
 import FavoriteIconLink from './Components/FavoriteIconLink';
+import SortIcon from './Components/SortIcon';
 import { TodoProvider } from './context/TodoContext';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/favorites" element={<FavoritesPage />} />
           </Routes>
           <FavoriteIconLink />
+          <SortIcon />
         </div>
       </Router>
     </TodoProvider>

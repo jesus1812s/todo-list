@@ -185,7 +185,7 @@ input:focus {
   color: rebeccapurple;
 }
 
-.about-link {
+.favorite-link {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -193,20 +193,52 @@ input:focus {
   cursor: pointer;
 }
 
-.about-link a {
+.favorite-link a {
   color: #fff;
 }
 
-.about-link a:hover {
+.favorite-link a:hover {
   color: #ff6a95;
 }
 
-.about h1 {
+.favorite h1 {
   margin-bottom: 20px;
 }
 
-.about p {
+.favorite p {
   margin: 10px 0;
+}
+
+.sort-link {
+  position: absolute;
+  right: 20px;
+  bottom: 70px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sort-link {
+  color: #fff;
+}
+
+.sort-link :hover {
+  color: #ff6a95;
+}
+
+.favoriteSort-link {
+  position: absolute;
+  right: 20px;
+  bottom: 110px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.favoriteSort-link {
+  color: #fff;
+}
+
+.favoriteSort-link :hover {
+  color: #ff6a95;
 }
 
 @media (max-width: 600px) {
