@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import TodoItem from './TodoItem';
 import PropTypes from 'prop-types';
 
@@ -8,9 +9,18 @@ function TodoList({ todo, handleDelete }) {
 
   return (
     <div className="feedback-list">
-      {todo.map((item) => (
-        <TodoItem key={item.id} item={item} handleDelete={handleDelete} />
-      ))}
+      <AnimatePresence>
+        {todo.map((item) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <TodoItem key={item.id} item={item} handleDelete={handleDelete} />
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from './shared/Button';
 import FavoriteSelector from './FavoriteSelector';
 
-function TodoForm() {
+function TodoForm({ handleAdd }) {
   const [text, setText] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -23,11 +23,24 @@ function TodoForm() {
     setText(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (text.trim().length > 10) {
+      const newTodo = {
+        date: new Date().toISOString(),
+        text,
+        isFavorite,
+      };
+      handleAdd(newTodo);
+      setText('');
+    }
+  };
+
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Create Todo ?</h2>
-        <FavoriteSelector select={(isFavorite) => console.log(isFavorite)} />
+        <FavoriteSelector select={(isFavorite) => setIsFavorite(isFavorite)} />
         {/* TODO - finish form*/}
         <div className="input-group">
           <input

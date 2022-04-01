@@ -10,6 +10,7 @@ function TodoItem({ item, handleDelete }) {
         <FaTimes color="blue" />
       </button>
       <div className="text-display">{item.text}</div>
+      <div className="text-display">Creation date: {item.date}</div>
     </Card>
   );
 }
