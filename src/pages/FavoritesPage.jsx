@@ -4,11 +4,14 @@ import TodoContext from '../context/TodoContext';
 import Card from '../Components/shared/Card';
 import TodoItem from '../Components/TodoItem';
 import { Link } from 'react-router-dom';
+import Spinner from '../Components/shared/Spinner';
 
 function FavoritesPage() {
-  const { todo } = useContext(TodoContext);
+  const { todo, isLoading } = useContext(TodoContext);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <>
       <Card>
         <div className="favorite">

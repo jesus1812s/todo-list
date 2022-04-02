@@ -29,7 +29,7 @@ function FavoriteSelector({ select }) {
         />
         <label htmlFor="num1">1</label>
       </li>
-      <li>
+      {/* <li>
         <input
           type="radio"
           id="num2"
@@ -127,7 +127,7 @@ function FavoriteSelector({ select }) {
           checked={selected === 10}
         />
         <label htmlFor="num10">10</label>
-      </li>
+      </li> */}
     </ul>
   );
 }

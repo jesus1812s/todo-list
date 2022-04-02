@@ -1,0 +1,40 @@
+{
+  "todo": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "Покупать кота",
+      "date": "2020-01-01"
+    },
+    {
+      "id": 2,
+      "rating": 8,
+      "text": "Thats russian wtf",
+      "date": "2020-02-01"
+    },
+    {
+      "id": 3,
+      "rating": 6,
+      "text": "Mister white",
+      "date": "2020-03-01"
+    },
+    {
+      "id": 4,
+      "rating": "7",
+      "text": " From postman",
+      "date": "2021-01-01"
+    },
+    {
+      "date": "2022-4-1",
+      "text": "New Todo Task",
+      "rating": 5,
+      "id": 5
+    },
+    {
+      "date": "2022-4-1",
+      "text": "Prueba ahora",
+      "rating": 10,
+      "id": 6
+    }
+  ]
+}

@@ -1,13 +1,17 @@
 import { FaSortAmountUpAlt, FaSortAmountDown } from 'react-icons/fa';
+import TodoContext from '../context/TodoContext';
+import { useContext } from 'react';
 
 function SortIcon() {
+  const { fetchTodosByDate, fetchTodosByDateAsc } = useContext(TodoContext);
+
   return (
     <>
       <div className="sort-link">
-        <FaSortAmountUpAlt size={30} />
+        <FaSortAmountUpAlt onClick={fetchTodosByDate} size={30} />
       </div>
       <div className="favoriteSort-link">
-        <FaSortAmountDown size={30} />
+        <FaSortAmountDown onClick={fetchTodosByDateAsc} size={30} />
       </div>
     </>
   );

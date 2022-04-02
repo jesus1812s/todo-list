@@ -1,53 +1,75 @@
-import { v4 as uuidv4 } from 'uuid';
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  const [todo, setTodo] = useState([
-    {
-      id: 1,
-      rating: 10,
-      text: 'This Todo has maximun priority.',
-      date: '2020-01-01',
-    },
-    {
-      id: 2,
-      rating: 5,
-      text: 'This Todo has medium priority.',
-      date: '2020-01-02',
-    },
-    {
-      id: 3,
-      rating: 1,
-      text: 'This Todo has no priority.',
-      date: '2020-01-03',
-    },
-  ]);
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [todo, setTodo] = useState([]);
   const [todoEdit, setTodoEdit] = useState({
     item: {},
     edit: false,
   });
 
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  //Sort todos by date
+
+  const fetchTodosByDate = async () => {
+    const res = await fetch(`/todo?_sort=date&_order=desc`);
+    const data = await res.json();
+    setTodo(data);
+    setIsLoading(false);
+  };
+
+  const fetchTodosByDateAsc = async () => {
+    const res = await fetch(`/todo?_sort=date&_order=asc`);
+    const data = await res.json();
+    setTodo(data);
+    setIsLoading(false);
+  };
+
+  //Fetch Todos
+  const fetchTodos = async () => {
+    const res = await fetch(`/todo?_sort=id&_order=desc`);
+    const data = await res.json();
+    setTodo(data);
+    setIsLoading(false);
+  };
   //Erase a todo
-  const deleteTodo = (id) => {
+  const deleteTodo = async (id) => {
     if (window.confirm('Are you sure you want to delete this todo ?')) {
+      await fetch(`/todo/${id}`, { method: 'DELETE' });
       setTodo(todo.filter((item) => item.id !== id));
     }
   };
 
   // Add a new todo
-  const addTodo = (newTodo) => {
-    newTodo.id = uuidv4();
-    setTodo([newTodo, ...todo]);
+  const addTodo = async (newTodo) => {
+    const response = await fetch('/todo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newTodo),
+    });
+    const data = await response.json();
+    setTodo([data, ...todo]);
   };
 
   //Upade a todo
-  const updateTodo = (id, updItem) => {
-    setTodo(
-      todo.map((item) => (item.id === id ? { ...item, ...updItem } : item))
-    );
+  const updateTodo = async (id, updItem) => {
+    const response = await fetch(`/todo/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updItem),
+    });
+    const data = await response.json();
+
+    setTodo(todo.map((item) => (item.id === id ? { ...item, ...data } : item)));
   };
 
   //Allow to edit a todo
@@ -63,10 +85,13 @@ export const TodoProvider = ({ children }) => {
       value={{
         todo,
         todoEdit,
+        isLoading,
         deleteTodo,
         addTodo,
         editTodo,
         updateTodo,
+        fetchTodosByDate,
+        fetchTodosByDateAsc,
       }}
     >
       {children}

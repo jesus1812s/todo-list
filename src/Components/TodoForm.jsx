@@ -70,7 +70,7 @@ function TodoForm() {
         <h2>Create Todo ?</h2>
         <br />
         <p>How important is your To Do ?</p>
-        <FavoriteSelector select={(rating) => setRating(rating)} />
+        {/* <FavoriteSelector select={(rating) => setRating(rating)} /> */}
         {/* TODO - finish form*/}
         <div className="input-group">
           <input

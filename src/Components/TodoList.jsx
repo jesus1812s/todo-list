@@ -1,16 +1,19 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext } from 'react';
 import TodoItem from './TodoItem';
+import Spinner from './shared/Spinner';
 import TodoContext from '../context/TodoContext';
 
 function TodoList() {
-  const { todo } = useContext(TodoContext);
+  const { todo, isLoading } = useContext(TodoContext);
 
-  if (!todo || todo.length === 0) {
+  if (!isLoading && (!todo || todo.length === 0)) {
     return <p> No todo yet</p>;
   }
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="todo-list">
       <AnimatePresence>
         {todo.map((item) => (
