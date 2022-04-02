@@ -1,13 +1,11 @@
 import Card from './shared/Card';
 import { useState, useContext, useEffect } from 'react';
 import Button from './shared/Button';
-import FavoriteSelector from './FavoriteSelector';
 import TodoContext from '../context/TodoContext';
 
 function TodoForm() {
   const [text, setText] = useState('');
-  // const [isFavorite, setIsFavorite] = useState(false);
-  const [rating, setRating] = useState(10);
+  const [favorite, setFavorite] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
 
@@ -17,7 +15,7 @@ function TodoForm() {
     if (todoEdit.edit === true) {
       setBtnDisabled(false);
       setText(todoEdit.item.text);
-      setRating(todoEdit.item.rating);
+      setFavorite(todoEdit.item.favorite);
     }
   }, [todoEdit]);
 
@@ -52,8 +50,7 @@ function TodoForm() {
       const newTodo = {
         date: getDate(),
         text,
-        /* isFavorite, */
-        rating,
+        favorite,
       };
       if (todoEdit.edit === true) {
         updateTodo(todoEdit.item.id, newTodo);
@@ -69,14 +66,20 @@ function TodoForm() {
       <form onSubmit={handleSubmit}>
         <h2>Create Todo ?</h2>
         <br />
-        <p>How important is your To Do ?</p>
-        {/* <FavoriteSelector select={(rating) => setRating(rating)} /> */}
-        {/* TODO - finish form*/}
+        <label htmlFor="favorite">Add to do to favorites ? </label>
+        <input
+          type="checkbox"
+          id="fav"
+          name="favorite"
+          value={favorite}
+          onChange={() => setFavorite(!favorite)}
+          checked={favorite}
+        />
         <div className="input-group">
           <input
             onChange={handleTextChange}
             type="text"
-            placeholder="Write something"
+            placeholder="Write your to do here"
             value={text}
           />
           <Button type="submit" isDisabled={btnDisabled}>

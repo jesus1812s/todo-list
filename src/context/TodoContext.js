@@ -30,6 +30,13 @@ export const TodoProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const fetchTodosByFavorites = async () => {
+    const res = await fetch(`/todo?_sort=favorite&_order=asc`);
+    const data = await res.json();
+    setTodo(data);
+    setIsLoading(false);
+  };
+
   //Fetch Todos
   const fetchTodos = async () => {
     const res = await fetch(`/todo?_sort=id&_order=desc`);
@@ -92,6 +99,7 @@ export const TodoProvider = ({ children }) => {
         updateTodo,
         fetchTodosByDate,
         fetchTodosByDateAsc,
+        fetchTodosByFavorites,
       }}
     >
       {children}

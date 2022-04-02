@@ -52,14 +52,14 @@ header {
   text-align: center;
 }
 
-.rating {
+.pink-ratio {
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin: 30px 0 40px;
 }
 
-.rating li,
+.pink-ratio li,
 .num-display {
   position: relative;
   background: #f4f4f4;
@@ -73,7 +73,7 @@ header {
   transition: 0.3s;
 }
 
-.rating li label {
+.pink-ratio li label {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -85,7 +85,7 @@ header {
   cursor: pointer;
 }
 
-.rating li:hover,
+.pink-ratio li:hover,
 .num-display {
   background: #ff6a95;
   color: #fff;
@@ -143,6 +143,19 @@ input:focus {
 
 .edit {
   right: 40px;
+}
+
+.delete {
+  position: absolute;
+  top: 11px;
+  right: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.delete {
+  right: 60px;
 }
 
 .btn {
@@ -242,11 +255,11 @@ input:focus {
 }
 
 @media (max-width: 600px) {
-  .rating li {
+  .pink-ratio li {
     margin: 10px 3px;
   }
 
-  .rating {
+  .pink-ratio {
     display: flex;
     align-items: center;
     justify-content: center;
