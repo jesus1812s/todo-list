@@ -33,7 +33,7 @@ export const TodoProvider = ({ children }) => {
   const fetchTodosByFavorites = async () => {
     const res = await fetch(`/todo?_sort=favorite&_order=asc`);
     const data = await res.json();
-    setTodo(data);
+    setTodo(data.filter((item) => item.favorite === true));
     setIsLoading(false);
   };
 

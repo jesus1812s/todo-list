@@ -4,75 +4,94 @@
       "id": 1,
       "rating": 10,
       "text": "Покупать кота",
-      "date": "2020-01-01"
+      "date": "2020-01-01",
+      "finished": false
     },
     {
       "id": 2,
       "rating": 8,
       "text": "Thats russian wtf",
-      "date": "2020-02-01"
-    },
-    {
-      "date": "2022-4-2",
-      "text": "Another test",
-      "rating": 6,
-      "id": 3
+      "date": "2020-02-01",
+      "finished": false
     },
     {
       "id": 4,
       "rating": "7",
       "text": " From postman",
-      "date": "2021-01-01"
+      "date": "2021-01-01",
+      "finished": false
     },
     {
       "date": "2022-4-1",
       "text": "New Todo Task",
       "rating": 5,
-      "id": 5
+      "id": 5,
+      "finished": false
     },
     {
       "date": "2022-4-1",
       "text": "Prueba ahora",
       "rating": 10,
-      "id": 6
+      "id": 6,
+      "finished": false
     },
     {
       "date": "2022-4-2",
       "text": "This is a test for sorting by date",
       "rating": 10,
-      "id": 7
+      "id": 7,
+      "finished": false
     },
     {
       "date": "2022-4-2",
       "text": "Setting another test",
       "favorite": true,
       "rating": 5,
-      "id": 9
+      "id": 9,
+      "finished": false
     },
     {
       "date": "2022-4-2",
       "text": "Test adding to fav",
       "favorite": true,
       "rating": 10,
-      "id": 10
+      "id": 10,
+      "finished": false
     },
     {
       "date": "2022-4-2",
       "text": "Testing a new todo not fav",
       "favorite": false,
-      "id": 11
+      "id": 11,
+      "finished": false
     },
     {
       "date": "2022-4-2",
       "text": "Testing a new todo fav",
       "favorite": true,
-      "id": 12
+      "id": 12,
+      "finished": true
     },
     {
       "date": "2022-4-2",
       "text": "New favorite",
       "favorite": true,
-      "id": 13
+      "id": 13,
+      "finished": true
+    },
+    {
+      "date": "2022-4-2",
+      "text": "Another test",
+      "favorite": false,
+      "id": 14,
+      "finished": true
+    },
+    {
+      "date": "2022-4-3",
+      "text": "Add to task favorite",
+      "favorite": true,
+      "finished": true,
+      "id": 15
     }
   ]
 }

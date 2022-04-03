@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Spinner from '../Components/shared/Spinner';
 
 function FavoritesPage() {
-  const { todo, isLoading } = useContext(TodoContext);
+  const { todo, isLoading, fetchTodosByDate } = useContext(TodoContext);
 
   return isLoading ? (
     <Spinner />
@@ -19,7 +19,9 @@ function FavoritesPage() {
           <p> This is the favorites page</p>
 
           <p>
-            <Link to="/"> back home</Link>
+            <Link to="/" onClick={fetchTodosByDate}>
+              back home
+            </Link>
           </p>
         </div>
       </Card>

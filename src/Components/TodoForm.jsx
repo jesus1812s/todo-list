@@ -6,6 +6,7 @@ import TodoContext from '../context/TodoContext';
 function TodoForm() {
   const [text, setText] = useState('');
   const [favorite, setFavorite] = useState(false);
+  const [finished, setFinished] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
 
@@ -16,6 +17,7 @@ function TodoForm() {
       setBtnDisabled(false);
       setText(todoEdit.item.text);
       setFavorite(todoEdit.item.favorite);
+      setFinished(todoEdit.item.finished);
     }
   }, [todoEdit]);
 
@@ -51,6 +53,7 @@ function TodoForm() {
         date: getDate(),
         text,
         favorite,
+        finished,
       };
       if (todoEdit.edit === true) {
         updateTodo(todoEdit.item.id, newTodo);

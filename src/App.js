@@ -29,13 +29,13 @@ function App() {
                   <TodoForm />
                   <TodoStats />
                   <TodoList />
+                  <SortIcon />
                 </>
               }
             ></Route>
             <Route path="/favorites" element={<FavoritesPage />} />
           </Routes>
           <FavoriteIconLink />
-          <SortIcon />
         </div>
       </Router>
     </TodoProvider>
