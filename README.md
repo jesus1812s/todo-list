@@ -2,7 +2,7 @@
 
 With this todo app you can create, edit and delete any task you like and add them as favorite as well.
 
-The backend of this server runs in a fakeAPIRest called JSON-Server, more instructions down bellow.
+The backend of this server runs in a fakeAPIRest called [JSON-Server](https://www.npmjs.com/package/json-server), more instructions down bellow.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
