@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "server": "json-server --watch db.json --port 5000",
+    "server": "json-server db.json --port 5000",
     "dev": "concurrently \"npm run server \" \"npm run start\""
   },
   "eslintConfig": {
