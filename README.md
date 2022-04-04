@@ -7,6 +7,8 @@ With this todo app you can create, edit and delete any task you like and add the
 
 The backend of this server runs in a fakeAPIRest called [JSON-Server](https://www.npmjs.com/package/json-server), more instructions down bellow.
 
+I tried to upload this app to vercel but the JSON server did not work for that environment, so to fully utilize the app please install via local.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
