@@ -1,5 +1,8 @@
 # Getting Started with Todo app
 
+![image](https://user-images.githubusercontent.com/36157513/161604441-7922f584-5e81-4274-bcca-f4d3c35e911c.png)
+
+
 With this todo app you can create, edit and delete any task you like and add them as favorite as well.
 
 The backend of this server runs in a fakeAPIRest called [JSON-Server](https://www.npmjs.com/package/json-server), more instructions down bellow.
