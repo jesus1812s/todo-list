@@ -75,7 +75,9 @@ export const TodoProvider = ({ children }) => {
     const ids = todo.map((item) => (item.checked === true ? item.id : null));
     const deleteAll = ids.map((id) => fetch(url + id, { method: 'DELETE' }));
     setTodo(todo.filter((item) => item.id !== id));
-    Promise.all(deleteAll);
+    Promise.all(deleteAll).then(() => {
+      window.location.reload();
+    });
   };
 
   // Add a new todo
