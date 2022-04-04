@@ -15,6 +15,7 @@ module.exports = {
     'text-summary',
     'text',
   ],
+  testEnvironment: 'jsdom',
   coverageThreshold: {
     global: {
       functions: 50,

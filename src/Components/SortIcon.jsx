@@ -1,3 +1,4 @@
+import React from 'react';
 import { FaSortAmountUpAlt, FaSortAmountDown } from 'react-icons/fa';
 import TodoContext from '../context/TodoContext';
 import { useContext } from 'react';

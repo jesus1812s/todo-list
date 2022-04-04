@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useContext } from 'react';
 import TodoItem from './TodoItem';

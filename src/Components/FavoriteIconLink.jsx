@@ -15,7 +15,11 @@ function FavoriteIconLink() {
           search: '?sort=favorite',
         }}
       >
-        <FaTasks onClick={fetchTodosByFavorites} size={30} />
+        <FaTasks
+          data-testid="FavoriteIconLink"
+          onClick={fetchTodosByFavorites}
+          size={30}
+        />
       </Link>
     </div>
   );

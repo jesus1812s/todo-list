@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TodoContext from '../context/TodoContext';

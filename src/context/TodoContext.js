@@ -1,3 +1,4 @@
+import React from 'react';
 import { createContext, useState, useEffect } from 'react';
 
 const TodoContext = createContext();
@@ -17,32 +18,48 @@ export const TodoProvider = ({ children }) => {
   //Sort todos by date
 
   const fetchTodosByDate = async () => {
-    const res = await fetch(`/todo?_sort=date&_order=desc`);
-    const data = await res.json();
-    setTodo(data);
-    setIsLoading(false);
+    try {
+      const res = await fetch(`/todo?_sort=date&_order=desc`);
+      const data = await res.json();
+      setTodo(data);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchTodosByDateAsc = async () => {
-    const res = await fetch(`/todo?_sort=date&_order=asc`);
-    const data = await res.json();
-    setTodo(data);
-    setIsLoading(false);
+    try {
+      const res = await fetch(`/todo?_sort=date&_order=asc`);
+      const data = await res.json();
+      setTodo(data);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchTodosByFavorites = async () => {
-    const res = await fetch(`/todo?_sort=favorite&_order=asc`);
-    const data = await res.json();
-    setTodo(data.filter((item) => item.favorite === true));
-    setIsLoading(false);
+    try {
+      const res = await fetch(`/todo?_sort=favorite&_order=asc`);
+      const data = await res.json();
+      setTodo(data.filter((item) => item.favorite === true));
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   //Fetch Todos
   const fetchTodos = async () => {
-    const res = await fetch(`/todo?_sort=id&_order=desc`);
-    const data = await res.json();
-    setTodo(data);
-    setIsLoading(false);
+    try {
+      const res = await fetch(`/todo?_sort=id&_order=desc`);
+      const data = await res.json();
+      setTodo(data);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
   //Erase a todo
   const deleteTodo = async (id) => {
