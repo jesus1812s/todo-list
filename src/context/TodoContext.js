@@ -52,6 +52,15 @@ export const TodoProvider = ({ children }) => {
     }
   };
 
+  //Delete multiple todos
+  const deleteMultipleTodos = async (id) => {
+    const url = 'http://localhost:5000/todo/';
+    const ids = todo.map((item) => (item.checked === true ? item.id : null));
+    const deleteAll = ids.map((id) => fetch(url + id, { method: 'DELETE' }));
+    setTodo(todo.filter((item) => item.id !== id));
+    Promise.all(deleteAll);
+  };
+
   // Add a new todo
   const addTodo = async (newTodo) => {
     const response = await fetch('/todo', {
@@ -65,7 +74,7 @@ export const TodoProvider = ({ children }) => {
     setTodo([data, ...todo]);
   };
 
-  //Upade a todo
+  //Update a todo
   const updateTodo = async (id, updItem) => {
     const response = await fetch(`/todo/${id}`, {
       method: 'PUT',
@@ -94,6 +103,7 @@ export const TodoProvider = ({ children }) => {
         todoEdit,
         isLoading,
         deleteTodo,
+        deleteMultipleTodos,
         addTodo,
         editTodo,
         updateTodo,

@@ -7,6 +7,7 @@ function TodoForm() {
   const [text, setText] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [checked, setChecked] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState('');
 
@@ -18,6 +19,7 @@ function TodoForm() {
       setText(todoEdit.item.text);
       setFavorite(todoEdit.item.favorite);
       setFinished(todoEdit.item.finished);
+      setChecked(todoEdit.item.checked);
     }
   }, [todoEdit]);
 
@@ -54,6 +56,7 @@ function TodoForm() {
         text,
         favorite,
         finished,
+        checked,
       };
       if (todoEdit.edit === true) {
         updateTodo(todoEdit.item.id, newTodo);

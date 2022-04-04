@@ -5,21 +5,11 @@ import { useContext, useState } from 'react';
 import TodoContext from '../context/TodoContext';
 
 function TodoItem({ item }) {
-  const { isSelected, setIsSelected } = useState([]);
+  const [isSelected, setIsSelected] = useState([]);
   const [finished, setFinished] = useState(false);
-  const { deleteTodo, editTodo, updateTodo } = useContext(TodoContext);
-
-  /*  var mainArray = ['One', 'two'];
-
-  const [InputDATA, setInputData] = useState(' ');
-
-  const addElementToArray = () => {
-    mainArray.push(InputDATA.toString());
-
-    window.alert('Data Added Successfully...');
-
-    console.log(mainArray);
-  }; */
+  const [checked, setChecked] = useState(false);
+  const { deleteTodo, editTodo, updateTodo, deleteMultipleTodos } =
+    useContext(TodoContext);
 
   const finishTodo = () => {
     if (finished === false) {
@@ -31,31 +21,41 @@ function TodoItem({ item }) {
     }
   };
 
+  const putChecked = (e) => {
+    const { value } = e.target;
+    if (item.checked === false) {
+      setChecked(true);
+      setIsSelected((prev) => [...prev, value]);
+      updateTodo(item.id, { ...item, checked: true });
+    } else {
+      setChecked(false);
+      setIsSelected((prev) => prev.filter((x) => x !== value));
+      updateTodo(item.id, { ...item, checked: false });
+    }
+  };
+
+  const handleDelete = () => {
+    if (item.checked === true) {
+      window.confirm('Delete all selected todos?');
+      deleteMultipleTodos(item.id, item.checked);
+    } else {
+      deleteTodo(item.id);
+    }
+  };
+
   return (
     <Card>
       <div className="num-display">{item.favorite === true ? '👑' : ''}</div>
-      {/*TODO need to delete 3 or more items at once*/}
-      {/* <div className="input-group">
-        <input
-          className="delete"
-          type="checkbox"
-          id={item.id}
-          onChange={addElementToArray}
-          value={item.id}
-        />
-        <button onClick={addElementToArray}>Send</button>
-      </div> */}
-
-      {/* <input
+      <input
         className="delete"
         type="checkbox"
-        id={item.id}
-        name="delete"
+        name="delete[]"
         value={item.id}
-        onChange={(item) => setInputData(item)}
-        checked={InputDATA}
-      /> */}
-      <button className="close" onClick={() => deleteTodo(item.id)}>
+        id="delete"
+        onChange={putChecked}
+        checked={item.checked}
+      />
+      <button className="close" onClick={handleDelete}>
         <FaTimes color="blue" />
       </button>
       <button onClick={() => editTodo(item)} className="edit">
